@@ -33,7 +33,7 @@ class LoginManager:
             # urls
             'url': 'http://10.253.0.235',  # 主楼 http://10.253.0.237 , 寝室公寓http://10.253.0.235
             # 'url': kwargs.get('url', 'http://10.253.0.235')
-            'url_login_page': "/",
+            'url_login_page': "/srun_portal_pc",
             'url_get_challenge_api': "/cgi-bin/get_challenge",
             'url_login_api': "/cgi-bin/srun_portal",
 
@@ -116,7 +116,7 @@ class LoginManager:
         errorinfo="Failed to resolve IP"
     )
     def _resolve_ip_from_login_page(self):
-        self.ip = re.search('id="user_ip" value="(.*?)"', self._page_response.text).group(1)
+        self.ip = re.search('ip\s*:\s*"(.*?)"', self._page_response.text).group(1)
 
     @checkip
     @infomanage(
